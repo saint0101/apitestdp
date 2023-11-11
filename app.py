@@ -1,7 +1,7 @@
 import uuid
 from flask import Flask, request
 
-from Api_rest.db import stores, items
+from db import stores, items
 
 
 app = Flask(__name__)
