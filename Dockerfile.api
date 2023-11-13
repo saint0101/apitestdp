@@ -1,7 +1,7 @@
 FROM python:3.10
 EXPOSE 5000
 WORKDIR /app
-RUN git clone https://github.com/saint0101/apitestdp.git
+RUN git clone -b api-web-apache https://github.com/saint0101/apitestdp.git
 COPY . /app
 WORKDIR /app/apitestdp
 # Afficher le contenu du répertoire
