@@ -4,6 +4,8 @@ services:
   # Service de l'API Flask
   web:
     build: .
+      context: .
+      dockerfile: Dockerfile.api
     ports:
       - "5002:5000"
     depends_on:
@@ -15,7 +17,8 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=rootpassword
       - MYSQL_DB=mydatabase
-
+    networks:
+      - mynetwork
   # Service de la base de données MariaDB
   db:
     image: mariadb/server:10.4
@@ -26,6 +29,24 @@ services:
       - MYSQL_DATABASE=mydatabase
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - mynetwork
+  # Apache2 service with PHP support for web app
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - mynetwork
 
 volumes:
   mariadb_data:
+
+networks:
+  mynetwork:

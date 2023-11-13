@@ -53,12 +53,14 @@ db = SQLAlchemy(app)
 
 
 
+import json
+
 # import the necessary packages
 import flask
-import json
 import mariadb
+
+from Api_rest.app.utils import test_db_connection
 from .db import config
-from .utils import test_db_connection
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True

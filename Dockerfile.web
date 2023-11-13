@@ -1,0 +1,6 @@
+FROM php:7.4-apache
+
+COPY apache2.conf /etc/apache2/apache2.conf
+COPY /web-app-files /var/www/html
+
+RUN a2enmod rewrite

@@ -8,7 +8,7 @@ app.config["DEBUG"] = True
 
 # configuration used to connect to MariaDB
 config = {
-    'host': '172.19.0.2',
+    'host': '127.0.0.1',
     'port': 3306,
     'user': 'root',
     'password': 'rootpassword',
