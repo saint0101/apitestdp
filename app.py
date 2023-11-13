@@ -2,11 +2,18 @@
 import flask
 import json
 import mariadb
-from .db import config
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
+# configuration used to connect to MariaDB
+config = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': 'root',
+    'password': 'rootpassword',
+    'database': 'mydatabase'
+}
 
 # route to return all people
 @app.route('/api/people', methods=['GET'])
@@ -28,5 +35,4 @@ def index():
    # return the results!
    return json.dumps(json_data)
 
-# app.run()
-# app.run(debug=True, host='0.0.0.0')
+app.run()
